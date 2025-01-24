@@ -1,0 +1,87 @@
+# Présentation {.backgroundTitre}
+
+## Objectifs de la formation
+
+![](img/clipboard-objectifs.png){fig-align="center"}
+
+## RStudio
+
+Logiciel de **traitement de données** et **analyse statistique** :
+
+-   offre un environnement interactif de développement statistique, analytique et graphique ; est doté d’un langage de programmation R ;
+
+-   permet d’accéder à des données, de les manipuler et les analyser ;
+
+-   S'interface avec les bases de données : Oracle, SYBASE, PostgreSQL, SQLITE…
+
+[Remplace **SAS** ou **SPSS**]{.red}
+
+[Logiciel IDE : *Integrated Development Environment*]{.blue}
+
+## Pourquoi utiliser R
+
+![](img/clipboard-avantages.png){fig-align="center"}
+
+## Comment travailler avec R au MASA
+
+-   Depuis la plate-forme [CERISE]{.red} :
+
+    -   ⇒ Adresse : <https://rstudio.agriculture.rie.gouv.fr>
+
+    -   ⇒ PISTACHE : Pistache \> Traitements statistiques et Diffusion \> R \> Migration SPSS et SAS vers R \> Accès au WIKI Cerise - R \> Accéder à Cerise
+
+Cerise permet l'accès aux ressources déposées sur le serveur, la sauvegarde, le partage de code et le travail simultané. C'est l'usage recommandé.
+
+-   En local sur son poste, sans intervention de Pastel
+
+    -   [**Non préconisée**]{.red}
+
+-   Existence d'une plate-forme CERISE de Préproduction :
+
+    -   <https://rstudio-pprd.agriculture.rie.gouv.fr>
+
+## Fenêtres dans RStudio
+
+![](img/clipboard-console.png){fig-align="center"}
+
+## La Console
+
+⇒ EN BAS A GAUCHE
+
+-   permet de saisir des lignes de commande
+
+-   affiche la log et les résultats
+
+![](img/clipboard-console1.png){fig-align="center"}
+
+*Log : historique des commandes, messages, etc.*
+
+## La Console
+
+![](img/clipboard-console2.png){fig-align="center"}
+
+-   Si la première ligne de la console commence par le caractère [**\>**]{.blue}
+
+→ cela signifie que R est disponible et en attente de la prochaine commande
+
+-   Si la première ligne commence par le caractère [**+**]{.blue}
+
+→ cela signifie que R considère que la commande de la ligne précédente n'est pas terminée et qu'il « attend la suite »
+
+[Il faut alors :]{.underline}
+
+\- compléter la commande
+
+*ou*
+
+\- sortir et recommencer en appuyant sur **Echap**
+
+## La Console
+
+-   Possibilité de naviguer dans la console avec les flèches **↑** ou **↓**
+
+-   Appuyer sur **Entrée** pour exécuter une commande, ou cliquer sur ![](img/clipboard-run.png)
+
+-   Pour effacer le contenu de la console : menu `Edit > Clear console` ou **Ctrl+L**
+
+## Visualisation
