@@ -85,3 +85,276 @@ Cerise permet l'accès aux ressources déposées sur le serveur, la sauvegarde, 
 -   Pour effacer le contenu de la console : menu `Edit > Clear console` ou **Ctrl+L**
 
 ## Visualisation
+
+⇒ EN HAUT A GAUCHE
+
+-   les données :
+
+![](img/clipboard-visu1.png){fig-align="center"}
+
+-   les scripts (programmes) :
+
+![](img/clipboard-visu2.png){fig-align="center"}
+
+→ Pour soumettre la ligne ou la sélection depuis le script, il faut cliquer sur **Run** ou **Ctrl + Entrée**
+
+## Entrer une ligne de commande
+
+Deux possibilités pour entrer une ligne de commande :
+
+-   depuis le [**Script**]{.red} ⇒ plutôt pour les commandes à conserver
+
+-   directement dans la [**Console**]{.blue} ⇒ plutôt pour les commandes de vérifications
+
++-----------------------------------------------------------------------+----------------------+
+| Je besoin de ...                                                      | J'écris ...          |
++=======================================================================+======================+
+| Trouver pour vérification le minimum d'une variable                   | [**Console**]{.blue} |
++-----------------------------------------------------------------------+----------------------+
+| Faire un tableau qui sera à refaire chaque mois                       | [**Script**]{.red}   |
++-----------------------------------------------------------------------+----------------------+
+| Créer un référentiel qu'il faudra compléter/modifier                  | [**Script**]{.red}   |
++-----------------------------------------------------------------------+----------------------+
+| Afficher une ligne d'un tableau pour vérifier l'exactitude de données | [**Console**]{.blue} |
++-----------------------------------------------------------------------+----------------------+
+| Afficher une ligne d'un tableau pour écrire un primeur                | [**Script**]{.red}   |
++-----------------------------------------------------------------------+----------------------+
+
+## Environnement et historique
+
+![](img/clipboard-env1.png){fig-align="center"}
+
+## Fichiers, graphiques, aides, packages et Viewer
+
+![](img/clipboard-onglets.png){fig-align="center"}
+
+## Organisation sous Cerise
+
+Cerise est organisé en plusieurs répertoires :
+
+-   [**00-Espace-Personnel**]{.blue} =\> espaces personnels des agents, accessible par l’agent uniquement
+
+-   [**01-Espace-de-Partage**]{.blue} =\> lieu de partage général entre les différents acteurs
+
+![](img/clipboard-espace1.png){fig-align="center"}
+
+## Organisation sous Cerise
+
+-   [**02-Espace-de-Production**]{.blue} =\> plateforme de stockage des données brutes collectées, ainsi que des fichiers de données et programmes issus des traitements statistiques réalisés par l'équipe projet
+
+![](img/clipboard-espace2.png){fig-align="center"}
+
+-   [**03-Espace-de-Diffusion**]{.blue} =\> mise à disposition au sein du SSM des données issues des traitements statistiques réalisés en amont
+
+*=\> Ces deux derniers espaces sont découpés par opérations statistiques*
+
+## Organisation sous Cerise
+
+-   [**04-Espace-Echanges**]{.blue} =\> stockage des fichiers de données à transmettre aux autres applications du SI CASSIS (par exemple Agreste) ainsi qu'aux SI des partenaires extérieurs
+
+![](img/clipboard-espace4.png){fig-align="center"}
+
+## Cheminer sous Cerise
+
+Sous Cerise, le chemin **"\~/"** fait référence à son espace personnel
+
+On peut reconstituer facilement un chemin complexe de l'arborescence Cerise en utilisant **l’auto-complétion** de R :
+
+-   Je commence par taper le chemin pointant vers l'espace personnel **"\~/"**
+
+-   Je place le curseur après le slash, et j'appuie sur la touche tabulation du clavier : l'arborescence est proposée
+
+![](img/clipboard-rep1.png){fig-align="center" width="305"}
+
+-   Avec les flèches haut et bas, je sélectionne l'élément qui m'intéresse. Si je veux descendre plus bas dans l'arborescence, j'appuie sur tabulation pour que l'arborescence du dossier choisi s'affiche. Je continue jusqu'à avoir construit le chemin complet :
+
+![](img/clipboard-rep2.png){fig-align="center"}
+
+## Répertoire de travail
+
+-   R a par défaut un répertoire de travail. Cela signifie que si aucun chemin n’est spécifié, R va lire ou écrire les fichiers dans ce répertoire.
+
+[⇒ Sur le serveur, le répertoire de travail est l'espace personnel]{.red}
+
+-   Pour connaître le répertoire de travail : commande [getwd()]{.blue}
+
+-   Pour changer le répertoire de travail :
+
+    -   commande [setwd]{.blue}("chemin du rép souhaité")
+
+    -   Ou dans l'onglet **Files**
+
+![](img/clipboard-directory.png){fig-align="center"}
+
+## Maafluence
+
+Dans la page d'accueil Maafluence de Cerise, on peut trouver des liens vers divers outils utiles :
+
+<https://orion.agriculture/confluence/display/CER/CERISE_Espace+Utilisateurs>
+
+![](img/clipboard-aide.png){fig-align="center" width="399"}
+
+-   Une FAQ sur Cerise avec les questions récurrentes, les actualités
+
+-   Des documents d'aide : le guide des bonnes mani'R, les fiches méthodologiques, les documents de formation
+
+-   Le lien vers le forum R du ministère, toujours vif à répondre à toutes les questions
+
+-   Le lien vers les actualités et les présentations du **Groupe Utilisateurs R** :
+
+<https://orion.agriculture/confluence/display/CER/Le+groupe+utilisateur+R>
+
+## Les scripts (programmes)
+
+Quand on programme, il est préférable d’écrire les commandes dans un fichier texte plutôt que dans la console
+
+**Avantages:**
+
+-   **Sauvegarde des opérations effectuée**s
+
+    -   → lorsqu'on redémarre R, tout ce qui a été effectué dans la console est perdu (contrairement aux scripts qui peuvent être enregistrés)
+
+-   **Obligation de commenter son code**
+
+-   **Code reproductible**
+
+    -   → en exécutant à nouveau les commandes d'un script, on peut reproduire les mêmes données et les mêmes résultats
+
+-   **Possibilité de partager son code**
+
+## Les scripts (programmes)
+
+Les scripts sont des fichiers texte - ils portent l'extension .R
+
+-   → Créer un script : **File \> New File \> R Script** ou
+
+![](img/clipboard-file1.png){fig-align="center"}
+
+-   → Travailler avec un script existant : **File \> Open File**… ou
+
+![](img/clipboard-file2.png){fig-align="center"}
+
+-   → Sauvegarder un script : **File \> Save** ou **File \> Save as**… ou
+
+![](img/clipboard-file3.png){fig-align="center"}
+
+## Les scripts (programmes)
+
+-   Pour exécuter des commandes d’un script, se positionner sur la ligne ou bien sélectionner l’ensemble des commandes à exécuter puis **Ctrl+Entrée** ou **Code \> Run Selected line(s)** ou ![](img/clipboard-run.png)
+
+-   Pour interrompre une exécution, on utilise le bouton « stop » de la console :
+
+![](img/clipboard-stop.png){fig-align="center"}
+
+*Pour exécuter tout le code d’un script préprogrammé, on utilise la fonction*
+
+*`source(file ="V:/FormationR/Prog/mon_fichier.R")`*
+
+*ou sous RStudio :* ![](img/clipboard-source.png)*\
+(dans ce cas, rien ne s’affiche dans la console lors de l’exécution)*
+
+## Les scripts (programmes)
+
++----------------------------------------------+-------------------------------------------------------------------------------------------+
+| ![](img/clipboard-attention.png){width="98"} | R est sensible à la casse                                                                 |
+|                                              |                                                                                           |
+|                                              | **⇒ Les caractères en minuscules ou en MAJUSCULES sont différents**                       |
++----------------------------------------------+-------------------------------------------------------------------------------------------+
+| ![](img/clipboard-ampoule.png){width="98"}   | Les commentaires s’écrivent après le symbole **\#**                                       |
++----------------------------------------------+-------------------------------------------------------------------------------------------+
+| ![](img/clipboard-attention.png){width="98"} | Dans les chemins Windows, les **\\** doivent être remplacés par des **/** ou des **\\\\** |
++----------------------------------------------+-------------------------------------------------------------------------------------------+
+
+## Les packages
+
+Nombreuses possibilités avec installation de base de R …
+
+… Mais parfois besoin de nouvelles fonctionnalités
+
+⇒ Utilisation de [**packages**]{.blue} :
+
+-   **Boîte à outils** : fonctions spécifiques (et parfois des données) relatives à un domaine particulier
+
+-   Développés et maintenus par la communauté des utilisateurs de R, et diffusés via le CRAN (Comprehensive R Archive Network = réseau de serveurs)
+
+![](img/clipboard-outils.png){fig-align="center"}
+
+## Les packages
+
+-   Pour pouvoir utiliser un package, il doit être installé et chargé *en mémoire* :
+
+    -   un package n'a besoin d'être installé qu'une seule fois : « achat de la boîte à outils »
+
+    -   il faut le charger à chaque nouvelle session pour l'utiliser : « prendre la boite du placard »
+
+-   **En local** 
+
+Un certain nombre de packages (base) sont fournis lors de l’installation de R et n'ont pas besoin d'être installés.
+
+-   **Sur Cerise**
+
+    -   Les « packages du socle commun » sont déjà installés → onglet Packages : `System Library`
+
+    -   Possibilité d'installer des packages par les utilisateurs → onglet Packages : `User Library`
+
+-   L’installation d’un package se fait de l'une des façons suivantes :
+
+    -   *En cliquant sur les menus en haut de la fenêtre* : **Tools → Install packages**
+
+    -   *Via une ligne de syntaxe dans le code* : **install.packages("nom_package")**
+
+    -   *Via l'onglet packages dans la fenêtre en bas à droite* : **bouton Install**
+
+## Les packages
+
+**Charger** un package (à chaque utilisation)
+
+-   utiliser la ligne de commande **library(nom_package)** (*conseillé pour la reproductibilité du programme)*
+
+-   cocher sur RStudio (*déconseillé car si quelqu'un reprend le programme, il ne saura pas qu'il faut cocher)*
+
+![](img/clipboard-package1.png){fig-align="center"}
+
+[RStudio:]{.underline} l’**onglet Packages** de la fenêtre en bas à droite indique les packages installés.
+
+Les packages cochés sont ceux chargés, et donc utilisables.
+
+Lorsqu'on essaie d'utiliser une fonction d'un package sans l'avoir chargé, un message d'erreur s'affiche
+
+![](img/clipboard-package2.png){fig-align="center"}
+
+## Les Raccourcis clavier utiles
+
+En plus des raccourcis claviers usuels (Enregistrer, copier-coller, annuler l'action précédente), un certain nombre de raccourcis clavier peuvent être très utiles au quotidien dans R :
+
++------------------------+---------------------------------------------------------------+
+| Raccourci clavier      | Action                                                        |
++:=======================+:==============================================================+
+| Ctrl + shift + n       | Ouvrir un nouveau script                                      |
++------------------------+---------------------------------------------------------------+
+| Ctrl + shift + m       | Écrire un pipe **%\>%** ou avec la nouvelle écriture **\|\>** |
++------------------------+---------------------------------------------------------------+
+| Ctrl + shift + c       | Passer les lignes de code sélectionnées en commentaires       |
++------------------------+---------------------------------------------------------------+
+| Ctrl + shift + r       | Introduire un titre de section en commentaires                |
++------------------------+---------------------------------------------------------------+
+| Ctrl + l               | Vider la console                                              |
++------------------------+---------------------------------------------------------------+
+| Crtl + f               | Ouvrir un module pour du chercher-remplacer dans le script    |
++------------------------+---------------------------------------------------------------+
+| Ctrl + i               | Indenter automatiquement les lignes de code sélectionnées     |
++------------------------+---------------------------------------------------------------+
+
+## EXERCICE 1:  Découverte de RStudio
+
+1)  **Découverte du serveur** : accéder à son répertoire personnel et créer des dossiers
+
+Dossier pour la formation initiation avec 3 sous-dossiers :
+
+-   un pour les données à importer : **1-Donnees**
+-   un pour enregistrer les programmes : **2-Programmes**
+-   un pour exporter les résultats : **3-Resultats**
+
+2)  **Répertoire de travail**
+
+Dans quel répertoire êtes vous ? Le modifier pour que ce soit le dossier consacré à la formation

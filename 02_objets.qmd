@@ -1,0 +1,216 @@
+# Les objets de R {.backgroundTitre}
+
+## Introduction
+
+Quand on lance une commande (dans la console ou depuis un script), R fait le calcul (ou l'opération demandée) et affiche le résultat dans la console
+
+![](img/clipboard-objet1.png){fig-align="center"}
+
+-   ⇒ Pour réutiliser, appeler ou modifier un résultat dans la suite du programme : [**stocker le résultat dans un objet ⇒ [c'est l'affectation]{.underline}**]{.green}
+
+-   [**⇒ Tout ce qui n'est pas stocké dans un objet n'est pas gardé en mémoire !**]{.red}
+
+*C'est comme si je voulais modifier un fichier Excel, il faut bien que je stocke mon travail !*
+
+## Stockage d'objet
+
+**Affectation** : affecter à un objet une valeur Opérateur : **\<-**
+
+![](img/clipboard-objet2.png){fig-align="center"}
+
+Affecter une valeur à un objet le crée en même temps
+
+Pour afficher la valeur d’un objet, il suffit de saisir son nom
+
+![](img/clipboard-objet3.png){fig-align="center"}
+
+## Stockage d'objet
+
+-   Possibilité de créer autant d'objets que l'on souhaite
+
+-   Les objets créés apparaissent dans la fenêtre en haut à droite
+
+-   La commande ***ls()*** liste tous les objets en mémoire
+
+![](img/clipboard-objet4.png){fig-align="center"}
+
+Si un objet est utilisé dans une opération, R le remplace par sa valeur
+
+![](img/clipboard-objet5.png){fig-align="center"}
+
+## Stockage d'objet
+
+-   **Les objets n'ont pas de mémoire**
+
+⇒ lorsqu'on assigne une nouvelle valeur à un objet déjà existant, la valeur précédente est perdue
+
+![](img/clipboard-objet6.png){fig-align="center"}
+
+*Comme dans un tableur : si dans une cellule je colle une valeur, la précédente est écrasée*
+
+-   Pas de lien entre les objets
+
+⇒ lorsqu'on assigne un objet à un autre, cela ne crée pas de lien entre eux : modifier le premier objet ne va pas modifier le second
+
+![](img/clipboard-objet7.png){fig-align="center"}
+
+*Différent du tableur: b ne change pas si a change*
+
+## Gestion de la mémoire
+
+-   **rm(nom_objet)** supprime l'objet nom_objet de la mémoire.
+
+-   **rm(list=ls()**) supprime tous les objets en mémoire.
+
+-   RStudio : L’icône ![](img/clipboard-clear.png) de l’onglet **Environment** supprime aussi les objets. En utilisant l'affichage Grid, on peut effectuer une sélection.
+
+-   R travaille en mémoire vive :
+
+    -   Environnement « trop plein » = impact sur les temps d'exécution et les performances de R
+
+        -   ⇒ Supprimer régulièrement de la mémoire les objets qui ne sont plus utiles
+
+-   Cerise : mémoire partagée entre tous les utilisateurs
+
+    -   ⇒ Gérer son environnement pour ne pas impacter négativement les autres utilisateurs
+
+## Règles de nommage des objets
+
+Les noms des objets doivent commencer par une lettre
+
+[[Il est possible :]{.underline}]{.green}
+
+[- d’utiliser des majuscules et des minuscules]{.green}
+
+[- d’utiliser des chiffres, l'underscore (\_) et le point (.)]{.green}
+
+[[Il est déconseillé :]{.underline}]{.orange}
+
+[- d’utiliser les caractères accentués]{.orange}
+
+[- de choisir des noms de variables non explicites, trop longs ou trop courts]{.orange}
+
+[- d'écraser les noms de fonctions existantes]{.orange}
+
+[[Il est impossible :]{.underline}]{.red}
+
+[- d’utiliser un espace]{.red}
+
+[- d'utiliser certains noms réservés au système (else, for, T, F, ...)]{.red}
+
+[- d'écraser les noms de fonctions existantes]{.red}
+
+## Les différents objets en R
+
+En R, les données sont stockées dans différents objets :
+
+-   **Vecteur :** ensemble de valeurs de même nature
+
+-   **Data.frame :** concaténation de plusieurs vecteurs (=colonnes), de natures potentiellement différentes
+
+*⇒ similaire à un tableau de données d'un tableur*
+
+*Avancé:*
+
+-   ***Matrice :** ensemble de valeurs de même nature (que des nombres, que des chaînes de caractères, que des booléens…)*
+
+-   ***Liste :** objet regroupant différents objets*
+
+## Le vecteur
+
+-   Exemple de vecteur : 1 objet (le vecteur) avec différents éléments
+
+![](img/clipboard-vecteur1.png){fig-align="center"}
+
+-   Créer un vecteur : **c()**
+
+**c()** est une fonction qui concatène plusieurs informations de même nature
+
+![**poli** est un vecteur de type caractère et de longueur 5\
+**serie** est un vecteur de type numérique de longueur 6](img/clipboard-vecteur2.png){fig-align="center"}
+
+[**Attention :**]{.red} Si des éléments sont de modes différents, R les convertit automatiquement au même mode :
+
+![](img/clipboard-vecteur3.png){fig-align="center"}
+
+**Rappel:** c() permet de créer un objet, pour l'utiliser [**il faut le stocker et donc l'affecter !**]{.red}
+
+![](img/clipboard-vecteur5.png){fig-align="center"}
+
+## Le vecteur
+
+-   Un vecteur peut être de quatre types :
+
+    -   numérique
+
+    -   caractère
+
+    -   logique (vrai ou faux)
+
+    -   facteur : vecteur dont les seules valeurs possibles sont les modalités d’une variable quantitative (ex : régions, départements…)
+
+-   Valeur particulière : **NA** lorsqu'une variable est en valeur manquante
+
+-   On détermine le type d’un vecteur avec [**mode()**]{.blue}, on peut tester les types avec les fonctions [**is.numeric(), is.character(), is.logical(), is.na()**]{.blue} etc :
+
+![](img/clipboard-vecteur6.png){fig-align="center"}
+
+## Les data.frame
+
+**data.frame:** plusieurs vecteurs (colonnes) de même longueur et de mode potentiellement différents 
+
+-   ⇒ C'est ce que l'on utilise le plus souvent
+
+-   ⇒ C'est un **tableau de données**, avec les observations en lignes et les variables en colonnes
+
+![](img/clipboard-frame1.png){fig-align="center"}
+
+## Les data.frame
+
+-   Création de 3 vecteurs de longueur 4 : nom, sexe et taille
+
+![](img/clipboard-frame2.png){fig-align="center"}
+
+-   La fonction **data.frame(** ) permet la création d’un data frame à partir de vecteurs
+
+![](img/clipboard-frame3.png){fig-align="center"}
+
+-   Visualisation du data frame : tab_ind ou **View(tab_ind)**
+
+![](img/clipboard-frame4.png){fig-align="center"}
+
+## Les data.frame : [Informations]{.blue}
+
+Pour connaître les caractéristiques d’un data.frame, il y a plusieurs outils utiles :
+
+-   [**str(**)]{.blue} donne la structure de la table (liste des colonnes, avec le type et les premières valeurs)
+
+-   [**names()**]{.blue} renvoie le vecteur des noms de colonnes
+
+-   [**head()**]{.blue} et [**tail()**]{.blue} donnent respectivement les 6 premières et les 6 dernières lignes de la table (6 par défaut, peut être modifié)
+
+-   [**nrow()**]{.blue} et [**ncol()**]{.blue} donnent respectivement le nombre de lignes et de colonnes de la table
+
+Pour accéder aux différentes variables d'un data.frame, on utilise l'opérateur [**\$**]{.blue}
+
+![](img/clipboard-frame5.png){fig-align="center"}
+
+## Exercice1 (suite) : découverte De rStudio
+
+3)  Programmes et manipulation des données
+
+Mise en place :
+
+-   Créer un nouveau programme et l'enregistrer
+
+-   Charger les librairies : dplyr, tidyr, readr
+
+Travail sur un data.frame : iris est un jeu de données fourni avec R
+
+-   Combien de colonnes ? De lignes ?
+
+-   Quel est le nom des variables ?
+
+-   Afficher les 10 premières lignes
+
+-   Quel est le type de chacune des variables ?

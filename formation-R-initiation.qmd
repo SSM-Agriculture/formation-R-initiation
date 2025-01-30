@@ -10,12 +10,10 @@ slide-tone: false # for blind readers
 chalkboard: false # press the B key to toggle chalkboard
 transition: slide
 fig-cap-location: bottom
-
 toc: true
 toc-title: Sommaire
 toc-depth: 1
 toc-float: true
-
 # multiplex: true
 execute:
   echo: false
@@ -23,6 +21,8 @@ execute:
   cache: false
 editor:
   render-on-save: true
+  markdown: 
+    wrap: 72
 ---
 
 ## Avant-propos
@@ -33,7 +33,8 @@ Ce diaporama de formation a été rédigé dans le but d'être le support
 visuel des formations dispensées au
 [MASA](https://agreste.agriculture.gouv.fr/).
 
-Ces formations s'adressent à des agents qui ont suivi **les fondamentaux de la programmation**.\
+Ces formations s'adressent à des agents qui ont suivi **les fondamentaux
+de la programmation**.\
 
 ## Avant-propos
 
@@ -42,8 +43,8 @@ Elles sont données en présentiel sur une durée **de 2 jours**.
 ::: callout-note
 ## Champ couvert par cette formation
 
-**Ce support couvre une initiation au language R  avec R-studio et une découverte de l'environnement
-de production du MASA.**
+**Ce support couvre une initiation au language R avec R-studio et une
+découverte de l'environnement de production du MASA.**
 
 Pour information, les thêmes abordés sont:
 
@@ -62,3 +63,4 @@ RStudio Workbench.
 
 {{< include 01_presentation.qmd >}}
 
+{{< include 02_objets.qmd >}}
