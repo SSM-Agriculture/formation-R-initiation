@@ -214,3 +214,57 @@ Travail sur un data.frame : iris est un jeu de données fourni avec R
 -   Afficher les 10 premières lignes
 
 -   Quel est le type de chacune des variables ?
+
+***Il y a plusieurs bonnes manière de faire : il faut expérimenter !***
+
+## Les fonctions
+
+Sous R, les ''objets'' sont des données (vecteurs, data.frames…) ou des fonctions
+
+⇒ Les fonctions permettent de transformer les données.
+
+-   Comme sous Excel ou calc, une fonction reçoit en entrée des données et des arguments (=paramètres)
+
+-   Une fonction renvoie des données et peut avoir des effets collatéraux (ex : modification d'une colonne)
+
+resultat ← [**fonction**]{.blue}(donnee, arg=TRUE,…)
+
+*Fonctions disponibles avec R de base et différents packages*
+
+*Ou possibilité de créer des fonctions (**module R perfectionnement**)*
+
+## Les fonctions
+
+Une multitude de fonctions : voir fiche mémo
+
+-   Retourne des informations sur les objets : **names(), ncol(), mode()** ...
+
+-   Numériques : **sum(), mean()** ...
+
+-   Traitements des chaînes de caractères : **substr(), toupper()**, …
+
+Il n'est pas nécessaire de connaître par cœur toutes les fonctions et leurs arguments : habitudes, mémo, aide de R, nombreuses ressources en ligne
+
+![](img/clipboard-func1.png){fig-align="center"}
+
+## Les fonctions
+
+On peut appliquer une fonction à un vecteur et donc à une colonne d'un data.frame, mais aussi à un élément
+
+![](img/clipboard-func2.png){fig-align="center"}
+
+On peut modifier une colonne avec une fonction ou créer une nouvelle
+
+![](img/clipboard-func3.png){fig-align="center"}
+
+## Exercice 1 (suite) :  Découverte de RStudio
+
+3\) Programmes et manipulation des données
+
+-   Calculer la moyenne de la variable Sepal.Length
+
+-   Mettre en majuscule la variable Species
+
+Est-ce que les modifications ont été stockées ?
+
+[AVANT LA SUITE DE LA FORMATION / PENSER A NETTOYER VOTRE ENVIRONNEMENT]{.red}

@@ -64,3 +64,5 @@ RStudio Workbench.
 {{< include 01_presentation.qmd >}}
 
 {{< include 02_objets.qmd >}}
+
+{{< include 03_manip-donnees.qmd >}}
