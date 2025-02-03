@@ -52,7 +52,9 @@ Pour information, les thêmes abordés sont:
 
 -   02 - Les objets de R
 
--   03 - Manipulation et traitement de données
+-   03 - Manipulation de données
+
+-   04 - Outils DPLYR & TIDYR
 
 Ils sont orientés pour être utile aux agents du SSM Agriculture et se
 concentrent sur une utilisation de R via
@@ -66,3 +68,5 @@ RStudio Workbench.
 {{< include 02_objets.qmd >}}
 
 {{< include 03_manip-donnees.qmd >}}
+
+{{< include 04_outils.qmd >}}

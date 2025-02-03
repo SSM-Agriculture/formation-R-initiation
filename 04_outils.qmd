@@ -1,0 +1,295 @@
+# Outils DPLYR & TIDYR
+
+## Principes des outils
+
+[2 packages à charger en début de programme]{.red}
+
+-   Objectif de *dplyr* : rassembler dans un seul package les outils de manipulation de données les plus importants pour l’analyse des données
+
+    -   ⇒ ensemble de fonctions correspondant à un **ensemble d’opérations élémentaires**
+
+-   Deux principes pour les packages *tidyr* et *dplyr* :
+
+    -   [Usage de fonctions « verbe »]{.blue} toutes construites sur le même principe : le premier paramètre est la table de données sur laquelle on travaille.
+
+    -   [Usage de l'opérateur pipe]{.blue} *(issu du package magrittr)*
+
+Dans R-Studio, le raccourci clavier pour cet opérateur est : [**Ctrl + Shift + M**]{.orange}
+
+![](img/clipboard-pipe.png){fig-align="center"}
+
+## Principes des outils
+
+L'opérateur pipe [**%\>%**]{.blue} ou [**\|\>**]{.blue} permet d'enchaîner les traitements dans une seule commande.
+
+-   [=\> Tout ce qui suit le pipe est appliqué à tout ce qui le précède]{.blue}
+
+![](img/clipboard-pipe2.png){fig-align="center"}
+
+## Principes des outils
+
+-   Tout ce qui suit le pipe est appliqué à tout ce qui le précède, appliqué à une situation du quotidien :
+
+![](img/clipboard-outil1.png){fig-align="center"}
+
+-   Un programme avec des enchaînements de pipes et de verbes peut se « traduire »
+
+![](img/clipboard-outil2.png){fig-align="center"}
+
+## Principes des outils
+
+Dans le cas d'enchaînement de traitements avec l'opérateur pipe, on peut aérer le code en allant à la ligne [**aprè**]{.underline}s chaque pipe.
+
+[**ATTENTION :**]{.red} Si on passe à la ligne avant le pipe, la suite des traitements ne s'effectue pas, la commande s'arrête.
+
+![](img/clipboard-outil3.png){fig-align="center"}
+
+## Sélectionner des colonnes
+
+Pour sélectionner des colonnes dans une table, on utilise la fonction [**select()**]{.blue}
+
+[`maTable %>% select(noms_des_colonnes)`]{.blue}
+
+-   → on renseigne l'ensemble des colonnes à conserver, séparés par une virgule
+
+-   → pour anti-sélectionner, on fait précéder le nom de la colonne par le signe -
+
+-   → L'ordre des colonnes dans les parenthèses sera l'ordre dans la table en sortie
+
+## Sélectionner des colonnes
+
+-   Pour créer une nouvelle table :
+
+[`nouvelle_table <- ma_table %>% select(nom_des_colonnes)`]{.blue}
+
+-   Pour agir directement sur la même table :
+
+[`ma_table <- ma_table %>% select(nom_des_colonnes)`]{.blue}
+
+*Rappel:* Si on ne fait pas l'affectation, on aura la table réduite affichée dans la console mais le changement ne sera pas stocké
+
+![](img/clipboard-donnees1.png){fig-align="center"}
+
+## Sélectionner des colonnes
+
+Quelques outils supplémentaires :
+
+| Description | Syntaxe |
+|------------------------------------|------------------------------------|
+| Sélectionner la 2ème, la 3ème et les 6ème colonne de ma_table | ma_table%\> % select(2, 3, 6) |
+| Sélectionner l’ensemble des colonnes comprises entre les colonnes VarDeb et VarFin de ma_table | ma_table%\> % select(VarDeb:VarFin) |
+| Sélectionner les colonnes qui contiennent exactement « Surface » dans leur nom | ma_table%\> % select(contains("Surface", ignore.case = FALSE)) |
+| Sélectionner les colonnes dont le nom commence par « SURF » ou « surf » ou « Surf »... | ma_table%\> % select(starts_with("SURF", ignore.case = TRUE)) |
+| Sélectionner les colonnes dont le nom termine par « \_1 » | ma_table%\> % select(ends_with("\_1")) |
+
+## Filtrer des lignes
+
+-   Pour filtrer les lignes dans une table à l’aide de conditions logiques,
+
+on utilise la fonction [**filter()**]{.blue}
+
+[`maTable %>% filter(conditions)`]{.blue}
+
+→ Les conditions peuvent être séparées par des virgules ou par les séparateurs de conditions habituelles **&, \|** ou **xor**.
+
+## Filtrer des lignes
+
+-   Pour créer une nouvelle table :
+
+[`nouvelle_table <- ma_table %>% filter(conditions)`]{.blue}
+
+-   Pour agir directement sur la même table:
+
+[`ma_table <- ma_table %>% filter(conditions)`]{.blue}
+
+![](img/clipboard-filter1.png){fig-align="center"}
+
+## Filtrer des lignes
+
+| Opérateur | Exemple syntaxe | Signification |
+|------------------------|------------------------|------------------------|
+| == | ma_table %\>% filter(region == "53") | On ne garde que les lignes pour lesquelles la variable région est égale à 53 \| → Attention au double égal !!! |
+| != | ma_table %\>% filter(region != "53") | On garde toutes les lignes pour lesquelles la variable région est différente de 53 |
+| \> | ma_table %\>% filter(SAU \> 10) | On garde les lignes pour lesquelles la variable SAU est supérieure stricte à 10 |
+| \< | ma_table %\>% filter(SAU \< 10) | On garde les lignes pour lesquelles la variable SAU est inférieure stricte à 10 |
+| \>= | ma_table %\>% filter(SAU \>= 10)) | On garde les lignes pour lesquelles la variable SAU est supérieure ou égale à 10 |
+
+## Filtrer des lignes
+
+| Opérateur | Exemple syntaxe | Signification |
+|------------------------|------------------------|------------------------|
+| \<= | ma_table %\>% filter(SAU \<= 10) | On garde les lignes pour lesquelles la variable SAU est inférieure ou égale à 10 |
+| %in% | ma_table %\>% filter(reg %in% c("52", "53")) | On garde les lignes pour lesquelles la variable SAU est inférieure ou égale à 10 |
+| & | ma_table %\>% filter(reg == "53" & SAU \> 10) | On garde les lignes pour lesquelles la variable reg vaut 53 et la SAU est supérieure stricte à 10 (les deux conditions en même temps) |
+| \| | ma_table %\>% filter(SAU \> 10 \| EFF \> 50) | On garde les lignes pour lesquelles la variable SAU est supérieure stricte à 10 ou la variable EFF est supérieure stricte à 50 (l’une ou l’autre des conditions seulement ou les deux) |
+| xor | ma_table %\>% filter(xor(SAU \> 10, EFF \> 50)) | On garde les lignes pour lesquelles la variable SAU est supérieure stricte à 10 ou celles pour lesquelles la variable |
+
+## Filtrer des lignes
+
+-   On peut aussi filtrer les lignes avec la fonction [**slice()**]{.blue}
+
+[`maTable %>% slice(paramètres)`]{.blue}
+
+![](img/clipboard-slice.png){fig-align="center"}
+
+[Exemples :]{.underline}
+
+`maTable %>% slice(1:10)` ⇒ renvoie les lignes 1 à 10 de maTable maTable %\>% `slice_max(nombre,n=10)` ⇒ renvoie les 10 lignes de *maTable* avec les valeurs max de la variable *nombre*
+
+## Gérer les doublons
+
+-   Pour gérer les doublons dans une table (ex enlever les doublons), on utilise la fonction [**distinct()**]{.blue}
+
+[`maTable %>% distinct(var_doublon, .keep_all = FALSE)`]{.blue}
+
+[*var_doublon*]{.blue} correspond aux variables qui, combinées, permettent d'identifier les doublons.
+
+si [*.keep_all = FALSE*]{.blue}, la table résultat ne contiendra que les variables citées dans var_doublon. Si [*.keep_all = TRUE*]{.blue}, toutes les variables de la table sont conservées.
+
+-   On peut supprimer les lignes doublons d'une table facilement en écrivant :
+
+[`maTable %>% distinct()`]{.blue}
+
+## Gérer les doublons
+
+![](img/clipboard-doublon.png){fig-align="center"}
+
+## Exercice 2 : Traitement de données
+
+[Objectif de l'exercice]{.underline} : à partir des données du RA2020, reproduire ce tableau
+
+![](img/clipboard-exo2.png){fig-align="center"}
+
+[À faire :]{.underline}
+
+1\) Préparer l'environnement
+
+2\) Importer les données
+
+3\) Après avoir découvert les données, réduire la table aux informations (colonnes et lignes) nécessaires
+
+4\) Existe-t-il des doublons ?
+
+5\) Identifier les différentes orientations technico-économiques
+
+## Trier une table
+
+Pour trier une table selon une ou plusieurs variables, on utilise la fonction [**arrange()**]{.blue}
+
+[`maTable %>% arrange(variables_de_tri)`]{.blue}
+
+→ possibilité de trier selon plusieurs colonnes : les variables de tri doivent être séparées par une virgule.
+
+→ on encadre les variables qu’il faut trier de façon décroissante par la fonction [**desc()**]{.blue}.
+
+## Trier une table
+
+-   Pour créer une nouvelle table :
+
+[`nouvelle_table_triee <- ma_table %>% arrange(variables_de_tri)`]{.blue}
+
+-   Pour agir directement sur la même table
+
+[`ma_table <- ma_table %>% arrange(variables_de_tri)`]{.blue}
+
+![](img/clipboard-tri.png){fig-align="center"}
+
+## Renommer des variables
+
+Pour renommer une ou plusieurs colonnes dans une table, on utilise la fonction [**rename()**]{.blue}
+
+[`maTable %>% rename(nouveau_nom = ancien_nom)`]{.blue}
+
+On peut renommer plusieurs variables dans un seul rename, en séparant les instructions par des virgules.
+
+## Renommer des variables
+
+-   Pour créer une nouvelle table :
+
+[`nouvelle_table <- ma_table %>% rename(nouveau_nom = ancien_nom)`]{.blue}
+
+-   Pour agir directement sur la même table
+
+[`ma_table <- ma_table %>% rename(nouveau_nom = ancien_nom)`]{.blue}
+
+![](img/clipboard-rename.png){fig-align="center"}
+
+## Renommer des variables
+
+-   Pour renommer plusieurs variables de la même façon en même temps, on utilise la fonction **rename_with** sur le modèle suivant *rename_with(table, fonction de renommage, variables à renommer)*. Quelques exemples :
+
+![](img/clipboard-rename1.png){fig-align="center"}
+
+## Exercice 2 : Traitement de données
+
+[À faire :]{.underline}
+
+-   Trier la table par département, OTEFDA_COEF17 et SAU_TOT décroissante
+
+-   Renommer la variable OTEFDA_COEF17 en OTEFDA, la variable UGBIFS.TOT en UGB et la variable SAU_TOT en SAU
+
+-   Supprimer le préfixe “SIEGE\_” dans les variables géographiques.
+
+![](img/clipboard-exo2-2.png){fig-align="center"}
+
+## Créer et modifier des variables
+
+Pour créer une nouvelle variable ou modifier une variable déjà existante dans une table, on utilise la fonction [**mutate()**]{.blue}
+
+[`maTable %>% mutate(variables_créées)`]{.blue}
+
+→ possibilité de créer plusieurs variables en une seule instruction, en séparant les différentes variables par des virgules
+
+## Créer et modifier des variables
+
+On peut modifier ou créer une variable :
+
+-   À partir d’une constante
+
+-   À partir d’une ou plusieurs autres variables de la table
+
+-   À partir d’une ou plusieurs autres variables d’une autre table
+
+Les expressions successives prennent en compte les résultats des calculs précédents 
+
+→ il est donc possible de créer une variable à partir d'une variable créée précédemment dans la même instruction
+
+![](img/clipboard-var1.png){fig-align="center"}
+
+## Créer et modifier des variables
+
+Créer une variable se fait selon cette formule :
+
+**nom_nouvelle_variable = instructions**
+
+![](img/clipboard-var2.png){fig-align="center"}
+
+## Créer et modifier des variables
+
+Par défaut : nouvelle variable ajoutée comme dernière colonne
+
+⇒ possibilité d'indiquer la position des variables à créer dans la table. On utilise les paramètres .before et .after sur le modèle des paramètres de la fonction **relocate** :
+
+![](img/clipboard-var3.png){fig-align="center"}
+
+## Créer et modifier des variables
+
+-   Pour (re)coder une variable, on peut utiliser la fonction **case_when()**, qui s'écrit de la manière suivante :
+
+![](img/clipboard-var4.png){fig-align="center"}
+
+-   Pour un (re)codage à deux conditions (si / sinon), on peut utiliser la fonction if_else() :
+
+![](img/clipboard-var5.png){fig-align="center"}
+
+## Exercice 2 : Traitement de données
+
+À vous de créer ou modifier les variables nécessaires à la réalisations du tableau final !
+
+Le tableau final devra contenir de “beaux” libellés de région et de département. On va donc commencer par corriger les variables LIB_REG et LIB_DEP.
+
+*str_to_title() du package stringr*
+
+Le tableau résultat contient un décompte des exploitations selon qu’elles aient une spécialisation végétale, animale ou bien mixte. La variable OTEFDA est trop détaillée
+
+⇒ créer la variable SPECIALISATION
