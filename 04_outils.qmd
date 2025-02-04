@@ -214,7 +214,7 @@ On peut renommer plusieurs variables dans un seul rename, en séparant les instr
 
 ![](img/clipboard-rename.png){fig-align="center"}
 
-## Renommer des variables
+## Renommer des variables - Avancé !
 
 -   Pour renommer plusieurs variables de la même façon en même temps, on utilise la fonction **rename_with** sur le modèle suivant *rename_with(table, fonction de renommage, variables à renommer)*. Quelques exemples :
 
@@ -286,10 +286,285 @@ Par défaut : nouvelle variable ajoutée comme dernière colonne
 
 À vous de créer ou modifier les variables nécessaires à la réalisations du tableau final !
 
-Le tableau final devra contenir de “beaux” libellés de région et de département. On va donc commencer par corriger les variables LIB_REG et LIB_DEP.
+Le tableau final devra contenir de “beaux” libellés de région et de département.
 
-*str_to_title() du package stringr*
+On va donc commencer par corriger les variables LIB_REG et LIB_DEP.
+
+*`str_to_title() du package stringr`*
 
 Le tableau résultat contient un décompte des exploitations selon qu’elles aient une spécialisation végétale, animale ou bien mixte. La variable OTEFDA est trop détaillée
 
 ⇒ créer la variable SPECIALISATION
+
+## Tris à plats
+
+-   Pour visualiser la répartition d'une variable catégorielle, on utilise la fonction [**count()**]{.blue}
+
+`maTable %>% count(variable)`
+
+-   → la fonction compte le nombre d’occurrences pour chaque modalité de la variable
+
+-   → la table en sortie contient deux variables : la variable pour laquelle on compte les modalités, et une variable appelée **n** qui contient les effectifs
+
+## Tris à plats
+
+-   Possibilité de calculer facilement des pourcentages, en ajoutant l'instruction suivante :
+
+`mutate(part = n/sum(n) * 100)`
+
+![](img/clipboard-tri1.png){fig-align="center"}
+
+## Tris à plats
+
+-   Possibilité de compter les croisements de plusieurs variables : liste des variables à croiser, séparées par une virgule
+
+![](img/clipboard-tri2.png){fig-align="center"}
+
+-   Possibilité d'ajouter une pondération, à l'aide du paramètre **wt**
+
+![](img/clipboard-tri3.png){fig-align="center"}
+
+## Agréger des données
+
+-   Pour résumer les données d'une table en une seule statistique, on utilise la fonction [**summarise()**]{.blue}
+
+`maTable %>% summarise(fonctions_stat(variable))`
+
+-   → possibilité de calculer plusieurs statistiques, en séparant les instructions par une virgule
+
+-   → on peut utiliser les fonctions statistiques de base telles que max, min, mean, sd, n…
+
+## Agréger des données
+
+-   Résumer une variable se fait selon cette formule :
+
+`summarise(nom_variable_résumé = fonction_stat)`
+
+![](img/clipboard-agreger1.png){fig-align="center"}
+
+## Agréger des données - Avancé !
+
+Pour calculer des statistiques sur plusieurs variables à la fois et/ou selon plusieurs fonctions, on utilisera [**across(**)]{.blue}. Quelques exemples :
+
+| Description | Syntaxe |
+|------------------------------|------------------------------------------|
+| Calculer la moyenne de toutes les variables de la table | maTable %\>% summarise(across(everything(), mean)) |
+| Calculer la somme de chacune des variables numériques de la table | maTable %\>% summarise(across(where(is.numeric), sum)) |
+| Calculer la somme de chacune des variables numériques de la table | maTable %\>% summarise(across(everything(), \~sum(is.na(.)))) |
+| Calculer la moyenne et la somme, d'une variable x de la table | maTable %\>% summarise(across(x, list(moy = mean, somme = sum))) |
+| Calculer la moyenne et la somme de toutes les variables de la table | maTable %\>% summarise(across(everything(), list(moy = mean, somme = sum))) |
+
+## Agréger des données par groupe
+
+-   Pour agréger les données d'une table par groupe d'une variable catégorielle on utilise la fonction [**group_by()**]{.blue} avant la fonction [**summarise()**]{.blue} :
+
+`maTable %>%`
+
+`group_by(var_groupe) %>%`
+
+`summarise(fonctions_stat(variable))`
+
+`%>% ungroup()`
+
+-   → On peut regrouper selon plusieurs variables, séparées par des virgules
+
+## Agréger des données par groupe
+
+![](img/clipboard-groupeby1.png){fig-align="center"}
+
+[Rappel :]{.underline} *pour cet exemple, pas d'affectation, le résultat s'affiche dans la console mais ne sera pas stocké*
+
+## Agréger des données par groupe
+
+On peut aussi combiner la fonction [**group_by(**)]{.blue} avec la fonction [**mutate()**]{.blue} : dans ce cas les statistiques par groupe sont directement intégrées à la table de données individuelles
+
+![](img/clipboard-groupeby2.png){fig-align="center"}
+
+## Exercice 2 : Traitement de données
+
+Données agrégées de la région
+
+⇒ Penser à affecter le résultat !
+
+Dénombrer le nombre d’exploitations relevant de chaque spécialisation
+
+⇒ Penser à affecter le résultat !
+
+Et par département ? Faire les calculs agrégés à ce niveau
+
+## Exercice 2 : Aide mémoire
+
+![](img/clipboard-exo2-aide.png){fig-align="center"}
+
+## Concaténer des tables
+
+Pour accoler deux tables horizontalement (rajouter des lignes), on utilise la fonction [**bind_rows()**]{.blue}
+
+`bind_rows(maTable1, maTable2)`
+
+`# ou précédé d'un pipe`
+
+`maTable1 %>% bind_rows(maTable2)`
+
+⇒ Les colonnes ayant le même nom vont s'empiler. Les autres vont se compléter avec des valeurs manquantes.
+
+La fonction [**bind_cols()**]{.blue} permet de la même façon de rajouter des **colonnes** à une table sans passer par une variable de jointure.
+
+[[Attention:]{.underline} sans variable de jointure signifie que rien ne garantit que les lignes correspondent]{.red}
+
+![](img/clipboard-concat1.png){fig-align="center"}
+
+## Concaténer des tables
+
+![](img/clipboard-concat2.png){fig-align="center"}
+
+## Joindre des tables avec une variable de jointure
+
+Pour fusionner deux tables en utilisant une ou plusieurs variables de jointure, on utilise les fonctions [**XXX_join()**]{.blue}
+
+`XXX_join(maTable1, maTable2, by = variables_de_fusion) # ou précédé d'un pipe maTable1 %>% XXX_join(maTable2, by = variables_de_fusion)`
+
+Les noms des variables de jointures doivent être indiqués entre guillemets [Il n'est pas nécessaire de trier les tables avant de faire la jointure]{.red}
+
+## Joindre des tables avec une variable de jointure
+
+![](img/clipboard-jointure1.png){fig-align="center"}
+
+## Joindre des tables avec une variable de jointure
+
+![](img/clipboard-jointure2.png){fig-align="center"}
+
+## Joindre des tables avec une variable de jointure
+
+-   Il est possible de réaliser une jointure à l'aide de plusieurs variables identifiantes : l'argument [**by**]{.blue} s'écrit alors [**c(''id1'', ''id2'', ...**)]{.blue}
+
+-   Lorsque les variables de jointure ont des noms différents dans les deux tables, l'argument [**by**]{.blue} prend comme paramètre un vecteur du type [**c(''id1_tab1'' = ''id1_tab2'', ''id2_tab1'' = ''id2_tab2'',…)**]{.blue}
+
+-   Si rien n'est précisé, la fusion se fait sur l'ensemble des variables portant le même nom dans les deux tables
+
+## Joindre des tables avec une variable de jointure
+
+-   Lorsque des variables ont le même nom dans deux tables différentes mais ne sont pas des variables de jointure, on peut choisir le suffixe à leur donner dans la table résultat avec l'argument **suffix**. Il s'écrit sous la forme :
+
+`suffix = c(''suffix_tab1'', ''suffix_tab2'')`
+
+[Remarque:]{.underline}
+
+-   Toutes les variables ne seront pas suffixées selon leur table d'origine, seulement celles possédant le même nom entre les deux tables.
+
+## Joindre des tables avec une variable de jointure
+
+![](img/clipboard-jointure3.png){fig-align="center"}
+
+## Réorganiser des tables
+
+-   Pour réorganiser une table, c'est à dire passer des lignes en colonnes ou inversement, on utilise les fonctions [**pivot_wider()**]{.blue} et [**pivot_longer()**]{.blue} du package tidyr.
+
+`pivot_longer(maTable, cols, names_to, values_to) # ou précédé d'un pipe`
+
+`maTable %>% pivot_longer(cols, names_to, values_to)`
+
+`pivot_wider(maTable, names_from, values_from) # ou précédé d'un pipe`
+
+`maTable %>% pivot_wider(names_from, values_from)`
+
+## Réorganiser des tables
+
+-   [**pivot_wider()**]{.blue} permet de disperser les lignes dans les colonnes
+
+![](img/clipboard-pivot_wider.png){fig-align="center"}
+
+**names_from** = nom de la variable dont les modalités deviendront les intitulés de colonne **values_from** = nom de la variable à utiliser pour remplir les colonnes
+
+## Réorganiser des tables
+
+-   [**pivot_longer()**]{.blue} est l'opération inverse : elle permet de rassembler les colonnes dans les lignes
+
+![](img/clipboard-pivot_long.png){fig-align="center"}
+
+**cols** = colonnes pivotantes
+
+**names_to** = nom de la première colonne à créer et qui recevra les actuels noms des colonnes pivotantes
+
+**values_t**o = nom de la deuxième colonne à créer et qui recevra les valeurs des colonnes pivotantes
+
+*Moyen mnémotechnique pour différencier les deux fonctions : avec pivot_longer, la table devient plus longue*
+
+## Réorganiser des tables
+
+![](img/clipboard-pivot.png){fig-align="center"}
+
+## Réorganiser des tables - Avancé !
+
+Quelques paramètres supplémentaires et utiles de la fonction **pivot_longer**:
+
+![](img/clipboard-pivot2.png){fig-align="center"}
+
+*ma_df %\>% pivot_longer(*
+
+*cols = birth_child1:birth_child3,* ← colonnes à pivoter (ou starts_with(''birth_child''))
+
+*names_to = ''child_number'',* ← nom de la colonne recevant les noms des colonnes à
+
+*pivoter values_to = ''date_of_birth'',* ← nom de la colonne &érecevant les valeurs des colonnes pivotées
+
+[*names_prefix = ''birth_child''*, ← préfixe à enlever des noms de colonnes à pivoter]{.blue}
+
+[*values_drop_na = TRUE* ← le résultat ne contient pas des lignes avec des NA dans la colonne indiquée dans le paramètre **values_to**]{.blue}
+
+*)*
+
+## Exercice 2 : Traitement de données
+
+Transposer les tables spécialisation pour avoir une ligne par département et une ligne total régional
+
+1.  Fusionner les tables départementales
+
+2.  Accoler les tables régionales
+
+3.  =\> Concaténer ces deux tables
+
+[Selon le temps]{.underline} :
+
+Denier chipotage pour une belle table à exporter :
+
+ - Déplacer les variables de SAU et d’UGB en fin de table
+
+ - Exprimer les variables SAU_tot et UGB_tot en milliers.
+
+ - Arrondir les variables SAU_tot, SAU_moy et UGB_tot à l’unité.
+
+ - Renommer les colonnes “en français”.
+
+-   **Export du résultat !**
+
+## Aide mémoire
+
+| Nom de la fonction | Usage |
+|-----------------|-------------------------------------------------------|
+| select() | sélectionner des variables |
+| relocate() | réorganiser des variables |
+| rename() | renommer des variables |
+| filter() | sélectionner des observations selon une ou plusieurs conditions |
+| mutate() | créer ou modifier des variables |
+| summarise() | agréger les observations en effectuant une fonction « résumé » sur une ou plusieurs variables |
+| arrange() | ordonner les observations selon une ou plusieurs variables |
+| group_by() | grouper les observations selon une ou plusieurs variables (avant d'effectuer des calculs) |
+| pivot_wider() | réorganiser les variables dans les lignes |
+| pivot_longer() | réorganiser les variables dans les lignes |
+
+## Liens utiles
+
+-   Introduction à R et au tidyverse : <https://juba.github.io/tidyverse/> (en français)
+
+-   Formations R aux MTES & MCTRCT : <https://mtes-mct.github.io/parcours-r/> (en français)
+
+-   Formations sous GEDSI :
+
+[https://ged.national.agri/gedsi/nxpath/default/SSP/workspaces/Partage%20SRISE/Support%20Formations/Formations%20R\@view_documents?tabIds=%3A&conversationId=0NXMAIN2](https://ged.national.agri/gedsi/nxpath/default/SSP/workspaces/Partage%20SRISE/Support%20Formations/Formations%20R@view_documents?tabIds=%3A&conversationId=0NXMAIN2)
+
+-   Forum CIRAD : <http://forums.cirad.fr/logiciel-R/> (forum francophone)
+
+-   Les aides-mémoires : <https://www.rstudio.com/resources/cheatsheets/> (aides-mémoire en anglais)
+
+-   Sans oubli er les recherches Google qui renvoient très souvent une aide en français ou Chat GPT

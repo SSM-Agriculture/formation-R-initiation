@@ -21,7 +21,7 @@ Créer un data.frame :
 -   importer des données de différents formats
 
 | Format du fichier source                | Fonction \*                     |
-|----------------------------------------|--------------------------------|
+|-----------------------------------------|---------------------------------|
 | format de données « plats » (csv, txt…) | read_delim, read_csv, read_csv2 |
 | RDS                                     | readRDS                         |
 | XLSX, XLS                               | read.xlsx, read_excel           |
@@ -76,7 +76,7 @@ Sur le serveur, on ne peut importer des données que si elles sont sauvegardées
 Enregistrer le **data.frame** résultat dans un fichier externe
 
 | Format du fichier source | Fonction \* |
-|------------------------------------|------------------------------------|
+|----|----|
 | format de données « plats » (csv, txt…) | write_delim, write_csv, write_csv2 *format recommandé pour l'utilisation dans d'autres logiciels que R* |
 | RDS | SaveRDS *format recommandé pour l'utilisation dans R* |
 | XLSX, XLS | write.xlsx |
