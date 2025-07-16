@@ -26,8 +26,6 @@ Logiciel de **traitement de données** et **analyse statistique** :
 
 -   Depuis la plate-forme [CERISE]{.red} :
 
-    -   ⇒ Adresse : <https://rstudio.agriculture.rie.gouv.fr>
-
     -   ⇒ PISTACHE : Pistache \> Traitements statistiques et Diffusion \> R \> Migration SPSS et SAS vers R \> Accès au WIKI Cerise - R \> Accéder à Cerise
 
 Cerise permet l'accès aux ressources déposées sur le serveur, la sauvegarde, le partage de code et le travail simultané. C'est l'usage recommandé.
