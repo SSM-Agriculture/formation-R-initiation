@@ -5,7 +5,7 @@ date: today
 date-format: "DD/MM/YYYY"
 author: "SSP/DEMESIS"
 description: |
-  Support de formation R-initiation au MASA
+  Support de formation R-initiation au SSM Agriculture
 slide-tone: false # for blind readers
 chalkboard: false # press the B key to toggle chalkboard
 transition: slide
@@ -31,7 +31,7 @@ editor:
 
 Ce diaporama de formation a été rédigé dans le but d'être le support
 visuel des formations dispensées au
-[MASA](https://agreste.agriculture.gouv.fr/).
+[SSM Agriculture](https://agreste.agriculture.gouv.fr/).
 
 Ces formations s'adressent à des agents qui ont suivi **les fondamentaux
 de la programmation**.\
@@ -44,7 +44,7 @@ Elles sont données en présentiel sur une durée **de 2 jours**.
 ## Champ couvert par cette formation
 
 **Ce support couvre une initiation au language R avec R-studio et une
-découverte de l'environnement de production du MASA.**
+découverte de l'environnement de production du SSM Agriculture.**
 
 Pour information, les thêmes abordés sont:
 

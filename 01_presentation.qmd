@@ -22,7 +22,7 @@ Logiciel de **traitement de données** et **analyse statistique** :
 
 ![](img/clipboard-avantages.png){fig-align="center"}
 
-## Comment travailler avec R au MASA
+## Comment travailler avec R au SSM Agriculture
 
 -   Depuis la plate-forme [CERISE]{.red} :
 
