@@ -1,18 +1,39 @@
-# Manipulation de données {.backgroundTitre}
+# Manipulation de données (lecture/écriture) {.backgroundTitre}
 
 ## Introduction
 
--   La partie [*Manipulation de données*]{.blue} va fournir les outils nécessaires aux traitements classiques à opérer sur une table de données.
+-   Les deux parties suivantes [*Manipulation de données*]{.blue} introduisent les outils nécessaires aux traitements classiques à opérer sur une table de données.
 
 -   A part pour la lecture et l’écriture de fichiers, les outils proposés relèvent des packages [**dplyr**]{.blue}) et [**tidyr**]{.blue}) : ils sont d’un usage plus aisé que les outils R de base et couvrent beaucoup des fonctionnalités les plus courantes.
 
 **Objectif:** découvrir et utiliser les outils ([*packages*]{.blue}) nécessaires aux traitements classiques à opérer sur une table de données
 
--   Lecture et écriture de fichier : [**readr, readxl**]{.blue}, etc.
+-   Lecture et écriture de fichier : [**rio, readr, readxl**]{.blue}, etc.
 
 -   Fonctionnalités les plus courantes de manipulation des données : [**dplyr**]{.blue} et [**tidyr**]{.blue}
 
-## Lecture de données
+## Lecture ou écriture de fichiers (façon simple)
+
+Version courte: le package Rio permet avec une seule fonction d'importer
+ou exporter quasiment tout type de fichier (.csv, .xlsx, .ods, .rds,
+.sas7bdat, .parquet, etc.)
+
+Syntaxe de base :
+
+-   Import simple :
+    `maTable <- import("V:/adresseMaTable/monFichierAImporter.csv")`
+
+-   Export simple :
+    `export(maTable,"V:/adresseMaTable/monFichierAExporter.xlsx")`
+
+Rio est un package qui mobilise d'autres packages dédiés à certains
+types de fichier, cf. aide de rio pour les connaître et spécifier
+certains paramètres (ex: importer un seul onglet)
+
+-   `MaTable <- import("V:/adresseMaTable/monFichierAImporter.xlsx", sheet="monOnglet")`
+    (paramètres de `readxl::read_excel()`)
+
+## Lecture de données (packages spécialisés)
 
 Créer un data.frame :
 
@@ -31,7 +52,7 @@ Créer un data.frame :
 
 *\* Le détail des fonctions est dans les diapos masquées ou facilement trouvable en ligne ou dans l'onglet help*
 
-## Lecture de données
+## Lecture de données (packages spécialisés)
 
 -   Format des colonnes
 
@@ -48,30 +69,29 @@ Pour la plupart des formats (csv, txt,…), il faut spécifier le type des colon
 Avantage du format RDS :
 
 -   Conserve l'image exacte d'un objet : type de variable, encodage, etc.
-
 -   Format plus léger
 
 *C'est le format recommandé pour travailler sous R (enregistrement de tables de travail, de tables de mise à disposition, etc.)*
 
-## Lecture de données
+## Lecture de données (clic-bouton)
 
-Rstudio dispose également d'un assistant d'import pour les fichiers text
+Rstudio dispose également d'un assistant d'import pour les fichiers textes (csv notamment), Excel voire SAS
 
 ![](img/clipboard-manip1.png){fig-align="center"}
 
-## Lecture de données
+## Lecture de données (clic-bouton)
 
 ![](img/clipboard-manip2.png){fig-align="center"}
 
 ## Lecture de données
 
-Sur le serveur, on ne peut importer des données que si elles sont sauvegardées sur le serveur. Pour importer des données enregistrées en local, il faut auparavant les enregistrer sur le serveur.
+Sur Cerise, on ne peut importer des données que si elles sont sauvegardées dans l'environnement Cerise. Pour importer des données enregistrées en local, il faut auparavant les enregistrer dans Cerise.
 
-⇒ pour importer une table de l'ordinateur local sur Cerise, on utilise le bouton ***Upload*** de l'onglet *File*s en bas à droite de l'interface.
+⇒ pour importer une table de l'ordinateur local sur Cerise, on utilise le bouton ***Télécharger***  (***Upload***) de l'onglet *Fichiers* (*Files*) en bas à droite de l'interface.
 
 ![](img/clipboard-manip3.png){fig-align="center"}
 
-## Ecriture de données
+## Ecriture de données (packages spécialisés)
 
 Enregistrer le **data.frame** résultat dans un fichier externe
 
