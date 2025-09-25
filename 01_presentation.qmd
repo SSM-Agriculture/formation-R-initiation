@@ -12,11 +12,6 @@ Logiciel de **traitement de données** et **analyse statistique** :
 
 -   permet d’accéder à des données, de les manipuler et les analyser ;
 
--   S'interface avec les bases de données : Oracle, SYBASE, PostgreSQL, SQLITE…
-
-[Remplace **SAS** ou **SPSS**]{.red}
-
-[Logiciel IDE : *Integrated Development Environment*]{.blue}
 
 ## Pourquoi utiliser R
 
@@ -26,11 +21,11 @@ Logiciel de **traitement de données** et **analyse statistique** :
 
 -   Depuis la plate-forme [CERISE]{.red} :
 
-    -   ⇒ PISTACHE : Pistache \> Traitements statistiques et Diffusion \> R \> Migration SPSS et SAS vers R \> Accès au WIKI Cerise - R \> Accéder à Cerise
+    -   https://rstudio.agriculture.gouv.fr
 
 Cerise permet l'accès aux ressources déposées sur le serveur, la sauvegarde, le partage de code et le travail simultané. C'est l'usage recommandé.
 
--   En local sur son poste, sans intervention de Pastel
+-   En local sur son poste
 
     -   [**Non préconisée**]{.red}
 
@@ -59,19 +54,15 @@ Cerise permet l'accès aux ressources déposées sur le serveur, la sauvegarde, 
 ![](img/clipboard-console2.png){fig-align="center"}
 
 -   Si la première ligne de la console commence par le caractère [**\>**]{.blue}
-
 → cela signifie que R est disponible et en attente de la prochaine commande
 
 -   Si la première ligne commence par le caractère [**+**]{.blue}
-
 → cela signifie que R considère que la commande de la ligne précédente n'est pas terminée et qu'il « attend la suite »
 
 [Il faut alors :]{.underline}
 
 \- compléter la commande
-
 *ou*
-
 \- sortir et recommencer en appuyant sur **Echap**
 
 ## La Console
@@ -87,11 +78,9 @@ Cerise permet l'accès aux ressources déposées sur le serveur, la sauvegarde, 
 ⇒ EN HAUT A GAUCHE
 
 -   les données :
-
 ![](img/clipboard-visu1.png){fig-align="center"}
 
 -   les scripts (programmes) :
-
 ![](img/clipboard-visu2.png){fig-align="center"}
 
 → Pour soumettre la ligne ou la sélection depuis le script, il faut cliquer sur **Run** ou **Ctrl + Entrée**
@@ -104,19 +93,19 @@ Deux possibilités pour entrer une ligne de commande :
 
 -   directement dans la [**Console**]{.blue} ⇒ plutôt pour les commandes de vérifications
 
-+-----------------------------------------------------------------------+----------------------+
-| Je besoin de ...                                                      | J'écris ...          |
-+=======================================================================+======================+
-| Trouver pour vérification le minimum d'une variable                   | [**Console**]{.blue} |
-+-----------------------------------------------------------------------+----------------------+
-| Faire un tableau qui sera à refaire chaque mois                       | [**Script**]{.red}   |
-+-----------------------------------------------------------------------+----------------------+
-| Créer un référentiel qu'il faudra compléter/modifier                  | [**Script**]{.red}   |
-+-----------------------------------------------------------------------+----------------------+
-| Afficher une ligne d'un tableau pour vérifier l'exactitude de données | [**Console**]{.blue} |
-+-----------------------------------------------------------------------+----------------------+
-| Afficher une ligne d'un tableau pour écrire un primeur                | [**Script**]{.red}   |
-+-----------------------------------------------------------------------+----------------------+
++-----------------------------------------------------------------------+----------------------------------+
+| Je besoin de ...                                                      | J'écris ...                      |
++=======================================================================+==================================+
+| Trouver pour vérification le minimum d'une variable                   | [**Console**]{.blue}             |
++-----------------------------------------------------------------------+----------------------------------+
+| Faire un tableau qui sera à refaire chaque mois                       | [**Script**]{.red}               |
++-----------------------------------------------------------------------+----------------------------------+
+| Créer un référentiel qu'il faudra compléter/modifier                  | [**Script**]{.red}               |
++-----------------------------------------------------------------------+----------------------------------+
+| Afficher une ligne d'un tableau pour vérifier l'exactitude de données | [**Console**]{.blue}             |
++-----------------------------------------------------------------------+----------------------------------+
+| Afficher une ligne d'un tableau pour écrire un primeur                | [**Script**]{.red}               |
++-----------------------------------------------------------------------+----------------------------------+
 
 ## Environnement et historique
 
@@ -172,7 +161,7 @@ On peut reconstituer facilement un chemin complexe de l'arborescence Cerise en u
 
 -   R a par défaut un répertoire de travail. Cela signifie que si aucun chemin n’est spécifié, R va lire ou écrire les fichiers dans ce répertoire.
 
-[⇒ Sur le serveur, le répertoire de travail est l'espace personnel]{.red}
+[⇒ Sur Cerise, le répertoire de travail est l'espace personnel]{.red}
 
 -   Pour connaître le répertoire de travail : commande [getwd()]{.blue}
 
@@ -199,7 +188,6 @@ Dans la page d'accueil Maafluence de Cerise, on peut trouver des liens vers dive
 -   Le lien vers le forum R du ministère, toujours vif à répondre à toutes les questions
 
 -   Le lien vers les actualités et les présentations du **Groupe Utilisateurs R** :
-
 <https://orion.agriculture/confluence/display/CER/Le+groupe+utilisateur+R>
 
 ## Les scripts (programmes)
@@ -224,21 +212,21 @@ Quand on programme, il est préférable d’écrire les commandes dans un fichie
 
 Les scripts sont des fichiers texte - ils portent l'extension .R
 
--   → Créer un script : **File \> New File \> R Script** ou
+-   → Créer un script : **Fichier \> Nouveau fichier \> Script R** (**File \> New File \> R Script**) ou :
 
 ![](img/clipboard-file1.png){fig-align="center"}
 
--   → Travailler avec un script existant : **File \> Open File**… ou
+-   → Travailler avec un script existant : **Fichier \> Ouvrir un fichier**... (**File \> Open File**…) ou :
 
 ![](img/clipboard-file2.png){fig-align="center"}
 
--   → Sauvegarder un script : **File \> Save** ou **File \> Save as**… ou
+-   → Sauvegarder un script : **Fichier \> Enregistrer** ou **Fichier \> Enregistrer** (**File \> Save** ou **File \> Save as**…) ou : 
 
 ![](img/clipboard-file3.png){fig-align="center"}
 
 ## Les scripts (programmes)
 
--   Pour exécuter des commandes d’un script, se positionner sur la ligne ou bien sélectionner l’ensemble des commandes à exécuter puis **Ctrl+Entrée** ou **Code \> Run Selected line(s)** ou ![](img/clipboard-run.png)
+-   Pour exécuter des commandes d’un script, se positionner sur la ligne ou bien sélectionner l’ensemble des commandes à exécuter puis **Ctrl+Entrée** ou **Code \> Exécuter la ou les Lignes sélectionnées** (**Code \> Run Selected line(s)**) ou ![](img/clipboard-run.png)
 
 -   Pour interrompre une exécution, on utilise le bouton « stop » de la console :
 
@@ -325,27 +313,27 @@ Lorsqu'on essaie d'utiliser une fonction d'un package sans l'avoir chargé, un m
 
 En plus des raccourcis claviers usuels (Enregistrer, copier-coller, annuler l'action précédente), un certain nombre de raccourcis clavier peuvent être très utiles au quotidien dans R :
 
-+------------------------+---------------------------------------------------------------+
-| Raccourci clavier      | Action                                                        |
-+:=======================+:==============================================================+
-| Ctrl + shift + n       | Ouvrir un nouveau script                                      |
-+------------------------+---------------------------------------------------------------+
-| Ctrl + shift + m       | Écrire un pipe **%\>%** ou avec la nouvelle écriture **\|\>** |
-+------------------------+---------------------------------------------------------------+
-| Ctrl + shift + c       | Passer les lignes de code sélectionnées en commentaires       |
-+------------------------+---------------------------------------------------------------+
-| Ctrl + shift + r       | Introduire un titre de section en commentaires                |
-+------------------------+---------------------------------------------------------------+
-| Ctrl + l               | Vider la console                                              |
-+------------------------+---------------------------------------------------------------+
-| Crtl + f               | Ouvrir un module pour du chercher-remplacer dans le script    |
-+------------------------+---------------------------------------------------------------+
-| Ctrl + i               | Indenter automatiquement les lignes de code sélectionnées     |
-+------------------------+---------------------------------------------------------------+
++----------------------------------+---------------------------------------------------------------+
+| Raccourci clavier                | Action                                                        |
++:=================================+:==============================================================+
+| Ctrl + shift + n                 | Ouvrir un nouveau script                                      |
++----------------------------------+---------------------------------------------------------------+
+| Ctrl + shift + m                 | Écrire un pipe **%\>%** ou avec la nouvelle écriture **\|\>** |
++----------------------------------+---------------------------------------------------------------+
+| Ctrl + shift + c                 | Passer les lignes de code sélectionnées en commentaires       |
++----------------------------------+---------------------------------------------------------------+
+| Ctrl + shift + r                 | Introduire un titre de section en commentaires                |
++----------------------------------+---------------------------------------------------------------+
+| Ctrl + l                         | Vider la console                                              |
++----------------------------------+---------------------------------------------------------------+
+| Crtl + f                         | Ouvrir un module pour du chercher-remplacer dans le script    |
++----------------------------------+---------------------------------------------------------------+
+| Ctrl + i                         | Indenter automatiquement les lignes de code sélectionnées     |
++----------------------------------+---------------------------------------------------------------+
 
-## EXERCICE 1:  Découverte de RStudio
+## EXERCICE 1: Découverte de RStudio
 
-1)  **Découverte du serveur** : accéder à son répertoire personnel et créer des dossiers
+1)  **Découverte de Cerise** : accéder à son répertoire personnel et créer des dossiers
 
 Dossier pour la formation initiation avec 3 sous-dossiers :
 

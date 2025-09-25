@@ -1,4 +1,4 @@
-# Outils DPLYR & TIDYR
+# Manipulation de données (dplyr & tidyr)
 
 ## Principes des outils
 
@@ -131,7 +131,6 @@ on utilise la fonction [**filter()**]{.blue}
 [`maTable %>% slice(paramètres)`]{.blue}
 
 ![](img/clipboard-slice.png){fig-align="center"}
-
 [Exemples :]{.underline}
 
 `maTable %>% slice(1:10)` ⇒ renvoie les lignes 1 à 10 de maTable maTable %\>% `slice_max(nombre,n=10)` ⇒ renvoie les 10 lignes de *maTable* avec les valeurs max de la variable *nombre*

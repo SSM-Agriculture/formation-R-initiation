@@ -90,15 +90,14 @@ Les noms des objets doivent commencer par une lettre
 
 [- de choisir des noms de variables non explicites, trop longs ou trop courts]{.orange}
 
-[- d'écraser les noms de fonctions existantes]{.orange}
+[- d'écraser les noms de fonctions existantes (c,mean,library...)]{.orange}
 
 [[Il est impossible :]{.underline}]{.red}
 
 [- d’utiliser un espace]{.red}
 
-[- d'utiliser certains noms réservés au système (else, for, T, F, ...)]{.red}
+[- d'utiliser certains noms réservés au système (else, for, TRUE, FALSE, NA, ...)]{.red}
 
-[- d'écraser les noms de fonctions existantes]{.red}
 
 ## Les différents objets en R
 
